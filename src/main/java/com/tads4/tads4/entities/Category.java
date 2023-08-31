@@ -10,7 +10,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
+    private String name;
 
     @ManyToMany(mappedBy = "categories")
     private Set<Product> products = new HashSet<>();
@@ -20,7 +20,7 @@ public class Category {
 
     public Category(Long id, String nome) {
         this.id = id;
-        this.nome = nome;
+        this.name = nome;
     }
 
     public Long getId() {
@@ -32,11 +32,11 @@ public class Category {
     }
 
     public String getNome() {
-        return nome;
+        return name;
     }
 
     public void setNome(String nome) {
-        this.nome = nome;
+        this.name = nome;
     }
 
     public Set<Product> getProducts() {
