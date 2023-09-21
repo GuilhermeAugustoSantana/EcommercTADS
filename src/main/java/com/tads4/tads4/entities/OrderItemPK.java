@@ -1,10 +1,7 @@
 package com.tads4.tads4.entities;
-
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import org.springframework.core.SpringVersion;
-@Embeddable
+
 public class OrderItemPK {
     @ManyToOne
     @JoinColumn(name = "order_id")

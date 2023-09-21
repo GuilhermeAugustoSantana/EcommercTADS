@@ -1,4 +1,5 @@
 package com.tads4.tads4.entities;
+
 import jakarta.persistence.*;
 
 import java.util.HashSet;
@@ -18,9 +19,9 @@ public class Category {
     public Category() {
     }
 
-    public Category(Long id, String nome) {
+    public Category(Long id, String name) {
         this.id = id;
-        this.name = nome;
+        this.name = name;
     }
 
     public Long getId() {
@@ -31,15 +32,11 @@ public class Category {
         this.id = id;
     }
 
-    public String getNome() {
+    public String getName() {
         return name;
     }
 
-    public void setNome(String nome) {
-        this.name = nome;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
+    public void setName(String name) {
+        this.name = name;
     }
 }

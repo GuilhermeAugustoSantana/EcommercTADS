@@ -1,34 +1,28 @@
 package com.tads4.tads4.entities;
 
-
 import jakarta.persistence.*;
+
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
-@Table (name = "tb_order")
+@Table(name = "tb_order")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Instant moment;
     private OrderStatus status;
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private User client;
 
     @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
     private Payment payment;
-   @ManyToOne
-   @JoinColumn(name = "client_id")
-    private User client;
 
-    @OneToMany(mappedBy = "id.order")
-    private Set<OrderItem> items = new HashSet<>();
     public Order() {
     }
 
-    public Order(Long id, Instant moment, OrderStatus satus, User client) {
+    public Order(Long id, Instant moment, OrderStatus status, User client) {
         this.id = id;
         this.moment = moment;
         this.status = status;
@@ -52,35 +46,11 @@ public class Order {
         this.moment = moment;
     }
 
-    public OrderStatus getSatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setSatus(OrderStatus satus) {
-        this.status = satus;
-    }
-
-    public User getClient() {
-        return client;
-    }
-
-    public void setClient(User client) {
-        this.client = client;
-    }
-
-    public Payment getPayment() {
-        return payment;
-    }
-
-    public void setPayment(Payment payment) {
-        this.payment = payment;
-    }
-
-    public Set<OrderItem> getItems() {
-        return items;
-    }
-
-    public List<Product> getProducts(){
-        return items.stream().map(x -> x.getProduct()).toList();
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 }

@@ -1,23 +1,19 @@
 package com.tads4.tads4.entities;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_order_item")
 public class OrderItem {
     @EmbeddedId
     private OrderItemPK id = new OrderItemPK();
-
     private Integer quantity;
     private Double price;
 
     public OrderItem() {
     }
 
-    public OrderItem(Order order, Product product,  Integer quantity, Double price) {
+    public OrderItem(Order order, Product product, Integer quantity, Double price) {
         id.setOrder(order);
         id.setProduct(product);
         this.quantity = quantity;
@@ -31,12 +27,21 @@ public class OrderItem {
     public void setOrder (Order order){
         id.setOrder(order);
     }
+
     public Product getProduct() {
         return id.getProduct();
     }
 
     public void setProduct(Product product){
         id.setProduct(product);
+    }
+
+    public OrderItemPK getId() {
+        return id;
+    }
+
+    public void setId(OrderItemPK id) {
+        this.id = id;
     }
 
     public Integer getQuantity() {
