@@ -1,4 +1,5 @@
 package com.tads4.tads4.entities;
+
 import jakarta.persistence.*;
 
 import java.time.Instant;
@@ -9,10 +10,12 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     private Instant moment;
+
     @OneToOne
     @MapsId
-    private Order order;
+    Order order;
 
     public Payment() {
     }
@@ -31,7 +34,6 @@ public class Payment {
         this.id = id;
     }
 
-    @Column(columnDefinition = "TIMESTAMP WITHOUT TIME ZONE")
     public Instant getMoment() {
         return moment;
     }
@@ -39,4 +41,13 @@ public class Payment {
     public void setMoment(Instant moment) {
         this.moment = moment;
     }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 }
+

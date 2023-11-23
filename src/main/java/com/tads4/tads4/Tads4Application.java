@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Tads4Application {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(Tads4Application.class, args);
 	}
+
 }

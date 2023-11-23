@@ -8,6 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "tb_category")
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,4 +40,9 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
 }
+

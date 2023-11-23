@@ -1,5 +1,7 @@
-package com.tads4.tads4.entities;
+package com.tads4.tads4.dto;
 
+import com.tads4.tads4.entities.Order;
+import com.tads4.tads4.entities.User;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_user")
-public class User {
+public class UserDTO {
    @Id
    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,17 +23,25 @@ public class User {
     @OneToMany  (mappedBy = "client")
     private List<Order> orders = new ArrayList<>();
 
-    public User() {
+    public UserDTO() {
 
     }
 
-    public User(Long id, String name, String email, String phone, String birthDate, String password) {
+    public UserDTO(Long id, String name, String email, String phone, String birthDate, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
         this.birthDate = birthDate;
         this.password = password;
+    }
+    public UserDTO(User entity) {
+        this.id = entity.getId();
+        this.name = entity.getName();
+        this.email = entity.getEmail();
+        this.phone = entity.getPhone();
+        this.birthDate = entity.getBirthDate();
+        this.password = entity.getPassword();
     }
 
     public Long getId() {
